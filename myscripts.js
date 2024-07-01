@@ -1,16 +1,16 @@
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3)
     switch (randomNumber) {
-      case 0:
-        return 'ROCK'
-      case 1:
-        return 'PAPER'
-      case 2:
-        return 'SCISSORS'
+        case 0:
+            return 'ROCK'
+        case 1:
+            return 'PAPER'
+        case 2:
+            return 'SCISSORS'
     }
-  }
+}
 
-function getHumanChoice() {
+/* function getHumanChoice() {
     let response;
     while (response !== 'ROCK' && response !== 'PAPER' && response !== 'SCISSORS') {
         response = window.prompt("Choose: Rock, Paper or Scissors");
@@ -20,7 +20,7 @@ function getHumanChoice() {
             alert("Por favor, elige una opción válida.");
         }
     }
-    return response;
+    return response; */
 }
 
 let computerScore = 0;
@@ -39,9 +39,9 @@ function playRound(h, c) {
         humanScore += 1
         console.log("You win! Scissors beat paper")
     } else if (h == 'SCISSORS' && c == 'SCISSORS') {
-        console.log('Tie! Scissors = Scissors') 
+        console.log('Tie! Scissors = Scissors')
     } else if (h == 'SCISSORS' && c == 'ROCK') {
-        computerScore +=1
+        computerScore += 1
         console.log("You lose! Rock beats scissors")
     } else if (h == 'PAPER' && c == 'ROCK') {
         humanScore += 1
@@ -56,11 +56,11 @@ function playRound(h, c) {
 
 
 function playGame() {
-    for (let i = 0; i < 5; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection)
-    }
+    /*     for (let i = 0; i < 5; i++) {
+            const humanSelection = getHumanChoice();
+            const computerSelection = getComputerChoice();
+            playRound(humanSelection, computerSelection)
+        } */
 
     if (computerScore > humanScore) {
         console.log("Computer Wins " + computerScore + " to " + humanScore)
@@ -70,5 +70,20 @@ function playGame() {
         console.log("Tie")
     }
 }
+
+const scissorButton = document.querySelector("#scissors");
+scissorButton.addEventListener("click", function () {
+    playRound("SCISSORS", getComputerChoice());
+});
+
+const paperButton = document.querySelector("#paper");
+paperButton.addEventListener("click", function () {
+    playRound("PAPER", getComputerChoice());
+});
+
+const rockButton = document.querySelector("#rock");
+rockButton.addEventListener("click", function () {
+    playRound("ROCK", getComputerChoice());
+});
 
 playGame();
